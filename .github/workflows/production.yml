@@ -1,0 +1,32 @@
+name: 'Economia Popular -  Indicadores Economicos'
+on:
+  push:
+jobs:
+  build-docker-artifacts:
+    runs-on: ubuntu-latest
+    if: contains(github.ref, 'main')
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@13d241b293754004c80624b5567555c4a39ffbe3
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - uses: actions/checkout@v1
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1  
+
+      - name: Docker Build
+        run: docker build -t app:latest .
+
+      - name: Docker Tag Latest
+        run: docker tag app:latest 181560427716.dkr.ecr.us-east-1.amazonaws.com/economia-popular/indices-economicos:latest     
+
+      - name: Docker Push Latest
+        run: docker push 181560427716.dkr.ecr.us-east-1.amazonaws.com/economia-popular/indices-economicos:latest
+
+
+        
