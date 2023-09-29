@@ -30,7 +30,7 @@ type Cafe struct {
 func RunnerCafe() {
 	runnerName := "Preços - Cafe Kg"
 	domain := "www.ipeadata.gov.br"
-	url := "http://www.ipeadata.gov.br/ExibeSerie.aspx?serid=37629&module=M"
+	url := "http://www.ipeadata.gov.br/ExibeSerie.aspx?serid=37608&module=M"
 	file_path := "./data/precos/cafe.json"
 	fileNameOutputCSV := "./data/precos/cafe.csv"
 	s3KeyJSON := "precos/cafe.json"
