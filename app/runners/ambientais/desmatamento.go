@@ -4,7 +4,6 @@ import (
 	"crawlers/pkg/logger"
 	"crawlers/pkg/upload"
 	"encoding/json"
-	"fmt"
 	"os"
 	"strconv"
 	"strings"
@@ -127,8 +126,6 @@ func RunnerDesmatamentoProdes() {
 				return
 			}
 
-			fmt.Println(referencia)
-
 			item := DataDesmatamento{
 				Referencia: referencia,
 				Acre:       acre,
@@ -145,8 +142,6 @@ func RunnerDesmatamentoProdes() {
 
 			indice.Data = append(indice.Data, item)
 		})
-
-		fmt.Println(indice)
 	})
 
 	l.Info().
