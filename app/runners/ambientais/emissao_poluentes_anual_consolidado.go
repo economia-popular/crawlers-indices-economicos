@@ -4,7 +4,6 @@ import (
 	"crawlers/pkg/logger"
 	"crawlers/pkg/upload"
 	"encoding/json"
-	"fmt"
 	"math"
 	"os"
 	"sort"
@@ -272,8 +271,6 @@ func RunnerPoluentesAtmosfericosAnualConsolidado(emissores PoluentesAtmosfericos
 		item.Sergipe = math.Ceil(item.Sergipe*100) / 100
 		acc[item.Referencia] = item
 	}
-
-	fmt.Println(acc)
 
 	for _, i := range acc {
 		index.Data = append(index.Data, i)

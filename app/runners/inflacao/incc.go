@@ -123,8 +123,6 @@ func RunnerINCC() {
 		Str("URL", url).
 		Msg("Construindo o acomulado")
 
-	fmt.Println(acc)
-
 	for i, k := range acc {
 
 		// Ignorando o Acumulado Ano

@@ -63,8 +63,6 @@ func RunnerINCCM2008() {
 
 		e.ForEach("tr", func(i int, tr *colly.HTMLElement) {
 
-			// fmt.Println(tr)
-
 			ano_raw := tr.ChildText("td:nth-child(1)")
 			ano, _ := strconv.ParseInt(strings.TrimSpace(ano_raw), 10, 64)
 
@@ -494,8 +492,6 @@ func RunnerINCCM() {
 			Msg("Encontrando o elemento <table> para efetuar o parsing")
 
 		e.ForEach("tr", func(i int, tr *colly.HTMLElement) {
-
-			// fmt.Println(tr)
 
 			ano_raw := tr.ChildText("td:nth-child(1)")
 			ano, _ := strconv.ParseInt(strings.TrimSpace(ano_raw), 10, 64)
