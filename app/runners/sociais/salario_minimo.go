@@ -32,7 +32,7 @@ type SalarioMinimo struct {
 func RunnerSalarioMinimo() {
 	runnerName := "Salário Minimo"
 	domain := "www.debit.com.br"
-	url := "https://debit.com.br/tabelas/tabela-completa.php?indice=salario_minimo"
+	url := "https://www.debit.com.br/tabelas/salario-minimo"
 	file_path := "./data/sociais/salario_minimo.json"
 	fileNameOutputCSV := "./data/sociais/salario_minimo.csv"
 
