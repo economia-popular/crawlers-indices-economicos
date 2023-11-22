@@ -3,7 +3,7 @@ package sociais
 func Runner() {
 	RunnerDesemprego()
 	RunnerRendimento()
-	RunnerSalarioMinimo()
+	// RunnerSalarioMinimo()
 	RunnerEstimativaPopulacao()
 
 	// RunnerCadastroUnicoFamiliasPobreza()
