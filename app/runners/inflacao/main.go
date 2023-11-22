@@ -8,11 +8,12 @@ func Runner() {
 	RunnerIPCADetalhado12Meses()
 	RunnerINPC()
 	RunnerIPA()
+	RunnerSalarioMinimo()
 	// RunnerIPC()
 	// RunnerINCC()
 	// RunnerINCCM2008()
 	// RunnerINCCM()
 	// RunnerINCCConsolidado()
-	RunnerSalarioMinimo()
+
 	RunnerConsolidacao()
 }
