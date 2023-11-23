@@ -63,17 +63,17 @@ type Data struct {
 	INPCAcumulado12Meses   float64 `json:"inpc_acumulado_doze_meses" csv:"inpc_acumulado_doze_meses"`
 	IPAVariacao            float64 `json:"ipa_variacao" csv:"ipa_variacao"`
 	IPAAcumuladoAno        float64 `json:"ipa_acumulado_ano" csv:"ipa_acumulado_ano"`
-	IPCVariacao            float64 `json:"ipc_fipe_variacao" csv:"ipc_fipe_variacao"`
-	IPCAcumuladoAno        float64 `json:"ipc_fipe_acumulado_ano" csv:"ipc_fipe_acumulado_ano"`
-	INCCVariacao           float64 `json:"incc_variacao" csv:"incc_variacao"`
-	INCCAcumuladoAno       float64 `json:"incc_acumulado_ano" csv:"incc_acumulado_ano"`
-	INCCMVariacao          float64 `json:"incc_m_variacao" csv:"incc_m_variacao"`
-	INCCMcumuladoAno       float64 `json:"incc_m_acumulado_ano" csv:"incc_m_acumulado_ano"`
-	SelicMeta              float64 `json:"selic_meta" csv:"selic_meta"`
-	SelicAno               float64 `json:"selic_ano" csv:"selic_ano"`
-	JurosReais             float64 `json:"juros_reais" csv:"juros_reais"`
-	SalarioMinimo          float64 `json:"salario_minimo" csv:"salario_minimo"`
-	ConsolidacaoAno        bool    `json:"consolidado_ano" csv:"consolidado_ano"`
+	// IPCVariacao            float64 `json:"ipc_fipe_variacao" csv:"ipc_fipe_variacao"`
+	// IPCAcumuladoAno        float64 `json:"ipc_fipe_acumulado_ano" csv:"ipc_fipe_acumulado_ano"`
+	INCCVariacao     float64 `json:"incc_variacao" csv:"incc_variacao"`
+	INCCAcumuladoAno float64 `json:"incc_acumulado_ano" csv:"incc_acumulado_ano"`
+	INCCMVariacao    float64 `json:"incc_m_variacao" csv:"incc_m_variacao"`
+	INCCMcumuladoAno float64 `json:"incc_m_acumulado_ano" csv:"incc_m_acumulado_ano"`
+	SelicMeta        float64 `json:"selic_meta" csv:"selic_meta"`
+	SelicAno         float64 `json:"selic_ano" csv:"selic_ano"`
+	JurosReais       float64 `json:"juros_reais" csv:"juros_reais"`
+	SalarioMinimo    float64 `json:"salario_minimo" csv:"salario_minimo"`
+	ConsolidacaoAno  bool    `json:"consolidado_ano" csv:"consolidado_ano"`
 }
 
 type Inflacao struct {
@@ -100,7 +100,7 @@ func RunnerConsolidacao() {
 	ipca15File := "./data/inflacao/ipca15.json"
 	inpcFile := "./data/inflacao/inpc.json"
 	ipaFile := "./data/inflacao/ipa.json"
-	ipcFile := "./data/inflacao/ipc-fipe.json"
+	// ipcFile := "./data/inflacao/ipc-fipe.json"
 	inccFile := "./data/inflacao/incc.json"
 	inccMFile := "./data/inflacao/incc-m.json"
 	salarioMinimoFile := "./data/inflacao/salario_minimo.json"
@@ -266,25 +266,25 @@ func RunnerConsolidacao() {
 			Msg("converter para struct")
 	}
 
-	IPC := IPC{}
-	fileIPC, err := ioutil.ReadFile(ipcFile)
+	// IPC := IPC{}
+	// fileIPC, err := ioutil.ReadFile(ipcFile)
 
-	if err != nil {
-		l.Fatal().
-			Str("Runner", runnerName).
-			Str("Error", err.Error()).
-			Str("Arquivo", ipcFile).
-			Msg("Erro ao ler o arquivo")
-	}
+	// if err != nil {
+	// 	l.Fatal().
+	// 		Str("Runner", runnerName).
+	// 		Str("Error", err.Error()).
+	// 		Str("Arquivo", ipcFile).
+	// 		Msg("Erro ao ler o arquivo")
+	// }
 
-	err = json.Unmarshal([]byte(fileIPC), &IPC)
-	if err != nil {
-		l.Fatal().
-			Str("Runner", runnerName).
-			Str("Error", err.Error()).
-			Str("Arquivo", ipcFile).
-			Msg("converter para struct")
-	}
+	// err = json.Unmarshal([]byte(fileIPC), &IPC)
+	// if err != nil {
+	// 	l.Fatal().
+	// 		Str("Runner", runnerName).
+	// 		Str("Error", err.Error()).
+	// 		Str("Arquivo", ipcFile).
+	// 		Msg("converter para struct")
+	// }
 
 	INCCDI := INCC{}
 	fileINCC, err := ioutil.ReadFile(inccFile)
@@ -552,14 +552,14 @@ func RunnerConsolidacao() {
 		Str("Runner", runnerName).
 		Msg("Agregando os Items de IPC-FIPE ao Consolidado")
 
-	for _, in := range IPC.Data {
+	// for _, in := range IPC.Data {
 
-		item := consolidado[in.Referencia]
-		item.IPCVariacao = in.Variacao
-		item.IPCAcumuladoAno = in.AcumuladoAno
+	// 	item := consolidado[in.Referencia]
+	// 	item.IPCVariacao = in.Variacao
+	// 	item.IPCAcumuladoAno = in.AcumuladoAno
 
-		consolidado[in.Referencia] = item
-	}
+	// 	consolidado[in.Referencia] = item
+	// }
 
 	l.Info().
 		Str("Runner", runnerName).
