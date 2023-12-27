@@ -11,7 +11,6 @@ import (
 
 	"github.com/gocarina/gocsv"
 	"github.com/gocolly/colly"
-	"github.com/rs/zerolog/log"
 )
 
 type DataSuinaLombokg struct {
@@ -93,12 +92,12 @@ func RunnerSuinaLombo() {
 
 			referencia := strings.Replace(mes_referencia_td, ".", "-", -1)
 
-			log.Info().
-				Str("Runner", runnerName).
-				Str("Domain", domain).
-				Str("Referencia", referencia).
-				Float64("Valor", valor).
-				Msg("Item normalizado")
+			// log.Info().
+			// 	Str("Runner", runnerName).
+			// 	Str("Domain", domain).
+			// 	Str("Referencia", referencia).
+			// 	Float64("Valor", valor).
+			// 	Msg("Item normalizado")
 
 			item := DataSuinaLombokg{
 				Referencia: referencia,

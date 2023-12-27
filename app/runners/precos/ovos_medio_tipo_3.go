@@ -11,7 +11,6 @@ import (
 
 	"github.com/gocarina/gocsv"
 	"github.com/gocolly/colly"
-	"github.com/rs/zerolog/log"
 )
 
 type DataOvoMedioTipo330duzias struct {
@@ -93,12 +92,12 @@ func RunnerOvoMedioTipo3() {
 
 			referencia := strings.Replace(mes_referencia_td, ".", "-", -1)
 
-			log.Info().
-				Str("Runner", runnerName).
-				Str("Domain", domain).
-				Str("Referencia", referencia).
-				Float64("Valor", valor).
-				Msg("Item normalizado")
+			// log.Info().
+			// 	Str("Runner", runnerName).
+			// 	Str("Domain", domain).
+			// 	Str("Referencia", referencia).
+			// 	Float64("Valor", valor).
+			// 	Msg("Item normalizado")
 
 			item := DataOvoMedioTipo330duzias{
 				Referencia: referencia,
