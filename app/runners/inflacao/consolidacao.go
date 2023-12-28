@@ -73,6 +73,7 @@ type Data struct {
 	SelicAno         float64 `json:"selic_ano" csv:"selic_ano"`
 	JurosReais       float64 `json:"juros_reais" csv:"juros_reais"`
 	SalarioMinimo    float64 `json:"salario_minimo" csv:"salario_minimo"`
+	DividaPublica    float64 `json:"divida_publica_pib" csv:"divida_publica_pib"`
 	ConsolidacaoAno  bool    `json:"consolidado_ano" csv:"consolidado_ano"`
 }
 
@@ -106,6 +107,7 @@ func RunnerConsolidacao() {
 	salarioMinimoFile := "./data/inflacao/salario_minimo.json"
 	selicFile := "./data/selic/selic-meta.json"
 	selicAnoFile := "./data/selic/selic-percentual-ano.json"
+	dividaPublicaFile := "./data/inflacao/divida_publica.json"
 
 	file_path := "./data/inflacao/inflacao.json"
 	fileNameOutputCSV := "./data/inflacao/inflacao.csv"
@@ -386,6 +388,26 @@ func RunnerConsolidacao() {
 			Msg("converter para struct")
 	}
 
+	dividaPublica := DividaPublica{}
+	fileDividaPublica, err := ioutil.ReadFile(dividaPublicaFile)
+
+	if err != nil {
+		l.Fatal().
+			Str("Runner", runnerName).
+			Str("Error", err.Error()).
+			Str("Arquivo", dividaPublicaFile).
+			Msg("Erro ao ler o arquivo")
+	}
+
+	err = json.Unmarshal([]byte(fileDividaPublica), &dividaPublica)
+	if err != nil {
+		l.Fatal().
+			Str("Runner", runnerName).
+			Str("Error", err.Error()).
+			Str("Arquivo", dividaPublicaFile).
+			Msg("converter para struct")
+	}
+
 	// Construção do map de referencias
 	l.Info().
 		Str("Runner", runnerName).
@@ -591,6 +613,14 @@ func RunnerConsolidacao() {
 
 		item := consolidado[in.Referencia]
 		item.SalarioMinimo = in.Valor
+
+		consolidado[in.Referencia] = item
+	}
+
+	for _, in := range dividaPublica.Data {
+
+		item := consolidado[in.Referencia]
+		item.DividaPublica = in.Valor
 
 		consolidado[in.Referencia] = item
 	}
