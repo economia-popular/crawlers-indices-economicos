@@ -27,6 +27,18 @@ func main() {
 	l.Info().
 		Msg("Iniciando o processo de Crawling dos dados abertos")
 
+	if batch_index == "TESTE" {
+		// Inflação
+		l.Info().
+			Msg("Iniciando o Runner de Inflação")
+
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			inflacao.Runner()
+		}()
+	}
+
 	if batch_index == "0" || batch_index == "" {
 		// Ambientais
 		l.Info().
