@@ -59,7 +59,8 @@ func RunnerPIBValor() {
 		e.ForEach("tr", func(i int, tr *colly.HTMLElement) {
 
 			mes_referencia_td := strings.Replace(tr.ChildText("td:nth-child(1)"), ",", ".", -1)
-			valor_td := strings.Replace(tr.ChildText("td:nth-child(2)"), ",", ".", -1)
+			valor_td := strings.Replace(tr.ChildText("td:nth-child(2)"), ".", "", -1)
+			valor_td = strings.Replace(valor_td, ",", ".", -1)
 
 			valor, err := strconv.ParseFloat(strings.TrimSpace(valor_td), 64)
 
