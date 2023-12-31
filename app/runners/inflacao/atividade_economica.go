@@ -1,0 +1,5 @@
+package inflacao
+
+func RunnerAtividadeEconomica() {
+
+}
