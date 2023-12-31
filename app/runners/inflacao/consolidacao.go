@@ -421,12 +421,12 @@ func RunnerConsolidacao() {
 			Msg("Erro ao ler o arquivo")
 	}
 
-	err = json.Unmarshal([]byte(filePIBValor), &filePIBValor)
+	err = json.Unmarshal([]byte(filePIBValor), &pibValor)
 	if err != nil {
 		l.Fatal().
 			Str("Runner", runnerName).
 			Str("Error", err.Error()).
-			Str("Arquivo", dividaPublicaFile).
+			Str("Arquivo", pibValorFile).
 			Msg("converter para struct")
 	}
 
