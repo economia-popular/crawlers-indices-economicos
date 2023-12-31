@@ -11,6 +11,7 @@ func Runner() {
 	RunnerSalarioMinimo()
 	RunnerDividaPublica()
 	RunnerPIBValor()
+	RunnerCambioDolar()
 	// RunnerIPC()
 	// RunnerINCC()
 	// RunnerINCCM2008()

@@ -13,31 +13,31 @@ import (
 	"github.com/gocolly/colly"
 )
 
-type DataPIBValor struct {
+type DataCambioDolar struct {
 	Referencia string  `json:"referencia" csv:"referencia"`
 	Ano        string  `json:"ano" csv:"ano"`
 	Mes        string  `json:"mes" csv:"mes"`
 	Valor      float64 `json:"valor" csv:"valor"`
 }
 
-type PIBValor struct {
-	Atualizacao   time.Time      `json:"data_atualizacao"`
-	Fonte         string         `json:"fonte"`
-	UnidadeMedida string         `json:"unidade_medida`
-	Data          []DataPIBValor `json:"data"`
+type CambioDolar struct {
+	Atualizacao   time.Time         `json:"data_atualizacao"`
+	Fonte         string            `json:"fonte"`
+	UnidadeMedida string            `json:"unidade_medida`
+	Data          []DataCambioDolar `json:"data"`
 }
 
-func RunnerPIBValor() {
-	runnerName := "PIB-Valor"
-	url := "http://www.ipeadata.gov.br/ExibeSerie.aspx?serid=521274780"
+func RunnerCambioDolar() {
+	runnerName := "Câmbio - Dólar"
+	url := "http://www.ipeadata.gov.br/exibeserie.aspx?serid=32098"
 
 	domain := "www.ipeadata.gov.br"
 
-	unidadeMedida := "Milhões de R$"
-	file_path := "./data/inflacao/pib_valor.json"
-	fileNameOutputCSV := "./data/inflacao/pib_valor.csv"
-	s3KeyJSON := "inflacao/pib_valor.json"
-	s3KeyCSV := "inflacao/pib_valor.csv"
+	unidadeMedida := "R$"
+	file_path := "./data/inflacao/cambio_dolar.json"
+	fileNameOutputCSV := "./data/inflacao/cambio_dolar.csv"
+	s3KeyJSON := "cambio/cambio_dolar.json"
+	s3KeyCSV := "cambio/cambio_dolar.csv"
 
 	l := logger.Instance()
 
@@ -49,7 +49,7 @@ func RunnerPIBValor() {
 		colly.AllowedDomains(domain),
 	)
 
-	indice := &PIBValor{}
+	indice := &DividaPublica{}
 	indice.Atualizacao = time.Now()
 	indice.Fonte = domain
 	indice.UnidadeMedida = unidadeMedida
@@ -59,8 +59,7 @@ func RunnerPIBValor() {
 		e.ForEach("tr", func(i int, tr *colly.HTMLElement) {
 
 			mes_referencia_td := strings.Replace(tr.ChildText("td:nth-child(1)"), ",", ".", -1)
-			valor_td := strings.Replace(tr.ChildText("td:nth-child(2)"), ".", "", -1)
-			valor_td = strings.Replace(valor_td, ",", ".", -1)
+			valor_td := strings.Replace(tr.ChildText("td:nth-child(2)"), ",", ".", -1)
 
 			valor, err := strconv.ParseFloat(strings.TrimSpace(valor_td), 64)
 
@@ -81,7 +80,7 @@ func RunnerPIBValor() {
 				return
 			}
 
-			item := DataPIBValor{
+			item := DataDividaPublica{
 				Referencia: referencia,
 				Valor:      valor,
 				Ano:        ano,
