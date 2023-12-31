@@ -1,0 +1,72 @@
+package inflacao
+
+import (
+	"strconv"
+	"strings"
+	"time"
+
+	"github.com/gocolly/colly"
+)
+
+type DataDividaPublica struct {
+	Referencia string  `json:"referencia" csv:"referencia"`
+	Ano        string  `json:"ano" csv:"ano"`
+	Mes        string  `json:"mes" csv:"mes"`
+	Valor      float64 `json:"valor" csv:"valor_pib"`
+}
+
+type DividaPublica struct {
+	Atualizacao   time.Time           `json:"data_atualizacao"`
+	Fonte         string              `json:"fonte"`
+	UnidadeMedida string              `json:"unidade_medida`
+	Data          []DataDividaPublica `json:"data"`
+}
+
+func RunnerDividaPublica() {
+	url := "http://www.ipeadata.gov.br/exibeserie.aspx?serid=38388"
+	domain := "www.ipeadata.gov.br"
+	unidadeMedida := "% do PIB"
+
+	indice := &DividaPublica{}
+	indice.Atualizacao = time.Now()
+	indice.Fonte = domain
+	indice.UnidadeMedida = unidadeMedida
+
+	c := colly.NewCollector(
+		colly.AllowedDomains(domain),
+	)
+
+	// Callback para o evento de conclusão do request
+	c.OnHTML(".dxgvTable", func(e *colly.HTMLElement) {
+
+		// Iteração dos itens das tabelas da página
+		e.ForEach("tr", func(i int, tr *colly.HTMLElement) {
+
+			// Recuperando e tratando itens da página
+			mes_referencia_td := strings.Replace(tr.ChildText("td:nth-child(1)"), ",", ".", -1)
+			valor_td := strings.Replace(tr.ChildText("td:nth-child(2)"), ",", ".", -1)
+			valor, err := strconv.ParseFloat(strings.TrimSpace(valor_td), 64)
+
+			// Mais conversões e tratamentos de dados
+			// ...
+
+			item := DataDividaPublica{
+				Referencia: referencia,
+				Valor:      valor,
+				Ano:        ano,
+				Mes:        mes,
+			}
+
+			// Adicionando o registro ao dataset
+			indice.Data = append(indice.Data, item)
+
+		})
+
+		// Salvando em datasets intermediários
+		// ...
+	})
+
+	// Visitando a URL
+	c.Visit(url)
+
+}

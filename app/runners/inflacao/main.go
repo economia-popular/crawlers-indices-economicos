@@ -10,7 +10,8 @@ func Runner() {
 	RunnerIPA()
 	RunnerSalarioMinimo()
 	RunnerDividaPublica()
-
+	RunnerPIBValor()
+	RunnerCambioDolar()
 	// RunnerIPC()
 	// RunnerINCC()
 	// RunnerINCCM2008()
