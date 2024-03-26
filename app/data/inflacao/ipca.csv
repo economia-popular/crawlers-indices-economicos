@@ -527,3 +527,5 @@ referencia,ano,mes,variacao,acumulado_ano,acumulado_doze_meses,consolidado_ano,i
 2023-10,2023,10,0.24,3.75,4.82,false,Num202310
 2023-11,2023,11,0.28,4.04,4.68,false,Num202311
 2023-12,2023,12,0.56,4.62,4.62,true,Num202312
+2024-01,2024,01,0.42,0.42,4.51,false,Num202401
+2024-02,2024,02,0.83,1.25,4.5,false,Num202402

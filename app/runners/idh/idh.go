@@ -582,7 +582,7 @@ type HDICsv struct {
 func Runner() {
 	runnerName := "IDH"
 
-	fullURLFile := "https://hdr.undp.org/modules/custom/hdro_app/static/media/Onlinemaster_HDR2122_081522.ac8500f84b9d9d251f41.csv"
+	fullURLFile := "https://hdr.undp.org/data-center/static/media/Onlinemaster_HDR2324_020524.20d14778d6f5bbc951a1.csv"
 	fileNameRaw := "./data/idh/raw/hdr-raw.csv"
 	fileNameOutput := "./data/idh/idh.json"
 	fileNameOutputCSV := "./data/idh/idh.csv"
