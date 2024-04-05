@@ -71,7 +71,7 @@ func RunnerCambioDolar() {
 			mes := referencia[5:7]
 
 			if err != nil {
-				l.Error().
+				l.Warn().
 					Str("Runner", runnerName).
 					Str("Error", err.Error()).
 					Str("Valor recuperado", valor_td).
