@@ -53,7 +53,7 @@ type QueimadasCSV struct {
 func RunnerQueimadas() {
 	runnerName := "Queimadas - INPE"
 	domain := "queimadas.dgi.inpe.br"
-	url := "http://terrabrasilis.dpi.inpe.br/queimadas/situacao-atual/media/csv_estatisticas/historico_pais_brasil.csv"
+	url := "https://terrabrasilis.dpi.inpe.br/queimadas/situacao-atual/media/csv_estatisticas/historico_pais_brasil.csv"
 
 	fileNameRaw := "./data/ambientais/raw/historico_pais_brasil.csv"
 
