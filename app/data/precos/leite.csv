@@ -401,9 +401,9 @@ referencia,valor,modo_venda,litros
 2023-04,2.83,atacado,1
 2023-05,2.92,atacado,1
 2023-06,2.84,atacado,1
-2023-07,3.11,atacado,1
+2023-07,31.09,atacado,1
 2023-08,2.54,atacado,1
-2023-09,2.73,atacado,1
+2023-09,2.36,atacado,1
 2023-10,2.21,atacado,1
 2023-11,2.15,atacado,1
 2023-12,2.13,atacado,1
@@ -418,3 +418,4 @@ referencia,valor,modo_venda,litros
 2024-09,2.76,atacado,1
 2024-10,2.87,atacado,1
 2024-11,2.9,atacado,1
+2024-12,2.83,atacado,1
