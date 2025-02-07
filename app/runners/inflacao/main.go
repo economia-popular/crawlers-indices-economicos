@@ -1,6 +1,7 @@
 package inflacao
 
 func Runner() {
+
 	RunnerIPCA()
 	RunnerIPCA15()
 	RunnerIPCADetalhado()
@@ -12,6 +13,7 @@ func Runner() {
 	RunnerDividaPublica()
 	RunnerPIBValor()
 	RunnerCambioDolar()
+
 	// RunnerIPC()
 	// RunnerINCC()
 	// RunnerINCCM2008()

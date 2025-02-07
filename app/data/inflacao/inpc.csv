@@ -539,3 +539,4 @@ referencia,ano,mes,variacao,acumulado_ano,acumulado_doze_meses,consolidado_ano,i
 2024-09,2024,09,0.48,3.29,4.09,false,Num202409
 2024-10,2024,10,0.61,3.92,4.6,false,Num202410
 2024-11,2024,11,0.33,4.27,4.84,false,Num202411
+2024-12,2024,12,0.48,4.77,4.77,true,Num202412
